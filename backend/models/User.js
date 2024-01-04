@@ -8,6 +8,10 @@ const User = db.define("user",{
         primaryKey:true,
     },
     nama:DataTypes.STRING,
+    email:{
+        type:DataTypes.STRING,
+        unique:true,
+    },
     password:DataTypes.STRING,
 },{freezeTableName:true})
 
