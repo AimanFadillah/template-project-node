@@ -23,7 +23,7 @@ export default function Login ({setUser}) {
                     <div className="mb-3">
                         <Input type="password" required={true} name="password" />
                     </div>
-                    <button className="text-center btn btn-primary mt-2 shadow w-100" >masuk</button>
+                    <button className="text-center btn btn-primary mt-2 shadow w-100" >Masuk</button>
                     <h6 className="text-center d-block mt-3" style={{ fontSize:"14px" }} >Tidak punya akun bisa <Link to={"/register"} >Buat akun</Link></h6>
                 </form>
             </Col>

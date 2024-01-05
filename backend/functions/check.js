@@ -2,14 +2,12 @@ import { validationResult } from "express-validator";
 import jwt from "jsonwebtoken";
 
 export function checkLogin (req,res,next) {
-    function failedToken () {
-        res.clearCookie("login");
-        return {msg:"dangerToken"}
-    }
     const token = req.cookies.login;
-    if(!token) return res.json(failedToken())
     const verify = jwt.verify(token,process.env.JWT_TOKEN,((err,decode) => err ? false : decode));
-    if(!verify) return res.json(failedToken());
+    if(!verify) {
+        res.clearCookie("login");
+        return res.json({msg:"dangerToken"});
+    };
     req.user = verify;
     return next();
 }

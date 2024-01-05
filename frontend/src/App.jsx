@@ -27,10 +27,15 @@ export default function App () {
   }
 
   function checkUser (response) {
-    if(response.data.msg === "dangerToken"){
+    const msg = response.data.msg;
+    if(msg === "dangerToken"){
       setUser(false);
       return false;
     };
+    if(msg !== "success"){
+      alert(msg);
+      return false;
+    }
     return true;
   }
 
