@@ -7,7 +7,7 @@ export default function Login ({setUser}) {
 
     async function sendData (e) {
         e.preventDefault();
-        const response = await axios.post(`http://localhost:5000/api/login`,new FormData(e.target),{withCredentials:true})
+        const response = await axios.post(`${endpoint}/api/login`,new FormData(e.target),{withCredentials:true})
         if(response.data.msg !== "success") return alert(response.data.msg)
         setUser(response.data.data)
     }

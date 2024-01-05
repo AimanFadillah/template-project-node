@@ -15,14 +15,14 @@ export default function App () {
   },[])
 
   async function getUser () {
-    const response = await axios.get("http://localhost:5000/api/user",{withCredentials:true});
+    const response = await axios.get(`${endpoint}/api/user`,{withCredentials:true});
     if(checkUser(response)){
       setUser(response.data.data);
     }
   }
 
   async function removeUser () {
-    const response = await axios.get("http://localhost:5000/api/logout",{withCredentials:true});
+    const response = await axios.get(`${endpoint}/api/logout`,{withCredentials:true});
     setUser(false);
   }
 

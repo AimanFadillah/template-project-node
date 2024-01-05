@@ -8,7 +8,7 @@ export default function Register () {
 
     async function sendData (e) {
         e.preventDefault();
-        const response = await axios.post("http://localhost:5000/api/user",new FormData(e.target));
+        const response = await axios.post(`${endpoint}/api/user`,new FormData(e.target));
         if(response.data.msg !== "success") return alert(response.data);
         nav("/");
     }
