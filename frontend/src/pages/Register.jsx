@@ -1,16 +1,18 @@
 import { Link, useNavigate } from "react-router-dom";
 import { Col, Container, Row } from "../components/Grid";
 import Input from "../components/Input";
-import axios from "axios";
+import ConfigAxios from "../variabels/ConfigAxios";
+import { checkUser } from "../functions/UserFuntion";
 
 export default function Register () {
     const nav = useNavigate();
 
     async function sendData (e) {
         e.preventDefault();
-        const response = await axios.post(`${endpoint}/api/user`,new FormData(e.target));
-        if(response.data.msg !== "success") return alert(response.data);
-        nav("/");
+        const response = await ConfigAxios.post("/api/user",new FormData(e.target));
+        if(checkUser(response)){
+            nav("/");
+        }
     }
 
     return <Container>

@@ -1,15 +1,17 @@
 import {Container,Row,Col} from "../components/Grid"
-import axios from "axios";
 import Input from "../components/Input";
 import { Link } from "react-router-dom";
+import ConfigAxios from "../variabels/ConfigAxios";
+import { checkUser } from "../functions/UserFuntion";
 
 export default function Login ({setUser}) {
 
     async function sendData (e) {
         e.preventDefault();
-        const response = await axios.post(`${endpoint}/api/login`,new FormData(e.target),{withCredentials:true})
-        if(response.data.msg !== "success") return alert(response.data.msg)
-        setUser(response.data.data)
+        const response = await ConfigAxios.post("/api/login",new FormData(e.target))
+        if(checkUser(response)){
+            setUser(response.data.data)
+        }
     }
 
     return <Container>

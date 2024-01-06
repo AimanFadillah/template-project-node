@@ -4,40 +4,15 @@ import Register from "./pages/Register"
 import { useEffect, useState } from "react"
 import Beranda from "./pages/Beranda";
 import Loading from "./components/Loading";
-import axios from "axios";
 import Page404 from "./pages/404";
+import {getUser} from "./functions/UserFuntion"
 
 export default function App () {
   const [user,setUser] = useState();
-
+  
   useEffect(() => {
-    user == undefined ? getUser() : undefined;
+    user == undefined ? getUser(setUser) : undefined;
   },[])
-
-  async function getUser () {
-    const response = await axios.get(`${endpoint}/api/user`,{withCredentials:true});
-    if(checkUser(response)){
-      setUser(response.data.data);
-    }
-  }
-
-  async function removeUser () {
-    const response = await axios.get(`${endpoint}/api/logout`,{withCredentials:true});
-    setUser(false);
-  }
-
-  function checkUser (response) {
-    const msg = response.data.msg;
-    if(msg === "dangerToken"){
-      setUser(false);
-      return false;
-    };
-    if(msg !== "success"){
-      alert(msg);
-      return false;
-    }
-    return true;
-  }
 
   return <BrowserRouter>
     {user == undefined ? 
@@ -52,7 +27,7 @@ export default function App () {
     </Routes>
     : 
     <Routes>
-        <Route path="/" element={<Beranda user={user} removeUser={removeUser} />} />
+        <Route path="/" element={<Beranda user={user} setUser={setUser} />} />
         <Route path="*" element={<Page404 />} />
     </Routes>
     }

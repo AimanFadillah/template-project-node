@@ -1,4 +1,5 @@
-export default function Beranda ({user,removeUser}) {
+import { removeUser } from "../functions/UserFuntion"
 
-    return <h1>Hai {user.nama} <button className="btn btn-danger" onClick={removeUser} >logout</button> </h1>
+export default function Beranda ({user,setUser}) {
+    return <h1>Hai {user.nama} <button className="btn btn-danger" onClick={() => removeUser(setUser)} >logout</button> </h1>
 }
