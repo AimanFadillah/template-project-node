@@ -2,6 +2,7 @@ import User from "../models/User.js";
 import { body } from "express-validator"
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
+import { checkValidate} from "../functions/check.js";
 
 export default class LoginController {
 
@@ -9,6 +10,7 @@ export default class LoginController {
         body("email").notEmpty().withMessage("Email wajib ada")
             .isEmail().withMessage("Email tidak valid"),
         body("password").notEmpty().withMessage("Password wajib ada"),
+        checkValidate,
     ];
 
     static jam(jam = 1) {

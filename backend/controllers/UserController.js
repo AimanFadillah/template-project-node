@@ -1,6 +1,7 @@
 import User from "../models/User.js";
 import {body} from "express-validator"
 import bcrypt from "bcrypt";
+import { checkValidate } from "../functions/check.js";
 
 export default class UserController {
 
@@ -9,6 +10,7 @@ export default class UserController {
         body("email").notEmpty().withMessage("Email wajib ada")
                      .isEmail().withMessage("Email tidak valid"),
         body("password").notEmpty().withMessage("Password wajib ada"),
+        checkValidate,
     ]               
 
     static async index (req,res) {
