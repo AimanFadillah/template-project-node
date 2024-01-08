@@ -13,18 +13,14 @@ export default class LoginController {
         checkValidate,
     ];
 
-    static jam(jam = 1) {
-        return `${1000 * 60 * 60 * jam}`;
-    }
-
     static async login(req, res) {
         const body = req.body;
         const user = await User.findOne({ where: { email: body.email } });
 
         if (user && bcrypt.compareSync(body.password, user.password)) {
             const payload = user.toJSON();delete payload.password;
-            const token = jwt.sign(payload,process.env.JWT_TOKEN,{ expiresIn: LoginController.jam(3) });
-            res.cookie("login", token, { httpOnly: true, maxAge: LoginController.jam(3)});
+            const token = jwt.sign(payload,process.env.JWT_TOKEN,{ expiresIn: jam(3) });
+            res.cookie("login", token, { httpOnly: true, maxAge: jam(3)});
             return res.json({msg: "success",data: payload});
         }
 
@@ -36,4 +32,8 @@ export default class LoginController {
         return res.json({ msg: "success" });
     }
 
+}
+
+function jam(jam = 1) {
+    return `${1000 * 60 * 60 * jam}`;
 }
