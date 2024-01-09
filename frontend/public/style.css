@@ -1,5 +1,10 @@
 /* .bg-primary{
-    background-color: green!important
+    background-color: #7286D3!important
+}
+
+.btn-primary{
+    background-color: #7286D3!important;
+    border-color: #7286D3 !important;
 } */
 
 @media (min-width: 768px) {
