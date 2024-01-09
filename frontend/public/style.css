@@ -1,0 +1,13 @@
+/* .bg-primary{
+    background-color: green!important
+} */
+
+@media (min-width: 768px) {
+    .h-md-100{
+        height: 100%;
+    }
+
+    .z-md-2{
+        z-index: 2;
+    }
+}
