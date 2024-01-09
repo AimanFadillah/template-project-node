@@ -2,7 +2,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { Col, Container, Row } from "../components/Grid";
 import Input from "../components/Input";
 import ConfigAxios from "../variabels/ConfigAxios";
-import { checkUser } from "../functions/UserFuntion";
+import { checkMsg } from "../functions/UserFuntion";
 
 export default function Register () {
     const nav = useNavigate();
@@ -10,7 +10,7 @@ export default function Register () {
     async function sendData (e) {
         e.preventDefault();
         const response = await ConfigAxios.post("/api/user",new FormData(e.target));
-        if(checkUser(response)){
+        if(checkMsg(response)){
             nav("/");
         }
     }

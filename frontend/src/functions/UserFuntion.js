@@ -7,7 +7,7 @@ import ConfigAxios from "../variabels/ConfigAxios";
 
 export async function getUser(setUser) {
     const response = await ConfigAxios.get(`/api/user`);
-    if (checkUser(response,setUser)) {
+    if (checkMsg(response,setUser)) {
         setUser(response.data.data);
     }
 }
@@ -28,7 +28,7 @@ export async function removeUser(setUser) {
  * @param {function} setUser - Untuk Mengubah data user jika takut ada msg dangerToken
  */
 
-export function checkUser(response,setUser) {
+export function checkMsg(response,setUser) {
     const msg = response.data.msg;
     if (msg === "dangerToken" && setUser) {
         setUser(false);
