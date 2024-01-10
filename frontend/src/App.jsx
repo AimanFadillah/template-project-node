@@ -11,7 +11,7 @@ export default function App () {
   const [user,setUser] = useState();
   
   useEffect(() => {
-    user == undefined ? getUser(setUser) : undefined;
+    getUser(setUser);
   },[])
 
   return <BrowserRouter>
