@@ -1,8 +1,8 @@
-import User from "../models/User.js";
+import User from "../Models/User.js";
 import { body } from "express-validator"
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
-import { checkValidate} from "../functions/check.js";
+import { checkValidate } from "../Functions/check.js";
 
 export default class LoginController {
 
@@ -18,10 +18,10 @@ export default class LoginController {
         const user = await User.findOne({ where: { email: body.email } });
 
         if (user && bcrypt.compareSync(body.password, user.password)) {
-            const payload = user.toJSON();delete payload.password;
-            const token = jwt.sign(payload,process.env.JWT_TOKEN,{ expiresIn: jam(3) });
-            res.cookie("login", token, { httpOnly: true, maxAge: jam(3)});
-            return res.json({msg: "success",data: payload});
+            const payload = user.toJSON(); delete payload.password;
+            const token = jwt.sign(payload, process.env.JWT_TOKEN, { expiresIn: jam(3) });
+            res.cookie("login", token, { httpOnly: true, maxAge: jam(3) });
+            return res.json({ msg: "success", data: payload });
         }
 
         return res.json({ msg: "Email atau password Salah" });
