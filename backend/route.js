@@ -8,6 +8,7 @@ const Route = express.Router();
 
 Route.post("/api/login",LoginController.validate,LoginController.login);
 Route.get("/api/logout",checkLogin,LoginController.logout);
+
 Route.get("/api/user",checkLogin,UserController.index);
 Route.post("/api/user",UserController.validate,UserController.store);
 
