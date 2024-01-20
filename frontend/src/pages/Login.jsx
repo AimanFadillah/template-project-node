@@ -2,17 +2,16 @@ import {Container,Row,Col} from "../components/Grid"
 import Input from "../components/Input";
 import { Link } from "react-router-dom";
 import ConfigAxios from "../variabels/ConfigAxios";
-import { checkMsg } from "../functions/UserFuntion";
 import { useContext } from "react";
 import DataContext from "../variabels/Context";
 
 export default function Login () {
-    const {setUser} = useContext(DataContext);
+    const {setUser,userFunction} = useContext(DataContext);
 
     async function sendData (e) {
         e.preventDefault();
         const response = await ConfigAxios.post("/api/login",new FormData(e.target))
-        if(checkMsg(response)){
+        if(userFunction.checkMsg(response)){
             setUser(response.data.data)
         }
     }

@@ -1,42 +1,37 @@
 import ConfigAxios from "../variabels/ConfigAxios";
 
-/**
- * 
- * @param {function} setUser - Untuk Mengubah data user
- */
+export default class UserFunction {
 
-export async function getUser(setUser) {
-    const response = await ConfigAxios.get(`/api/user`);
-    if (checkMsg(response,setUser)) {
-        setUser(response.data.data);
+    constructor(user,setUser){
+        this.user = user;
+        this.setUser = setUser;
     }
-}
 
-/**
- * 
- * @param {function} setUser - Untuk Mengubah data user
- */
-
-export async function removeUser(setUser) {
-    const response = await ConfigAxios.get(`/api/logout`);
-    setUser(false);
-}
-
-/**
- * 
- * @param {object} response - Hasil dari response
- * @param {function} setUser - Untuk Mengubah data user jika takut ada msg dangerToken
- */
-
-export function checkMsg(response,setUser) {
-    const msg = response.data.msg;
-    if (msg === "dangerToken" && setUser) {
-        setUser(false);
-        return false;
-    };
-    if (msg !== "success") {
-        alert(msg);
-        return false;
+    checkMsg(response) {
+        const msg = response.data.msg;
+        if (msg === "dangerToken" && this.setUser) {
+            this.setUser(false);
+            return false;
+        };
+        if (msg !== "success") {
+            alert(msg);
+            return false;
+        }
+        return true;
     }
-    return true;
+
+    async getUser() {
+        const response = await ConfigAxios.get(`/api/user`);
+        if (this.checkMsg(response)) {
+            this.setUser(response.data.data);
+        }
+        return response.data.data;
+    }
+
+    async removeUser() {
+        const response = await ConfigAxios.get(`/api/logout`);
+        this.setUser(false);
+        return response.data.data;
+    }
+
 }

@@ -2,15 +2,17 @@ import { Link, useNavigate } from "react-router-dom";
 import { Col, Container, Row } from "../components/Grid";
 import Input from "../components/Input";
 import ConfigAxios from "../variabels/ConfigAxios";
-import { checkMsg } from "../functions/UserFuntion";
+import { useContext } from "react";
+import DataContext from "../variabels/Context";
 
 export default function Register () {
+    const {userFunction} = useContext(DataContext);
     const nav = useNavigate();
 
     async function sendData (e) {
         e.preventDefault();
         const response = await ConfigAxios.post("/api/user",new FormData(e.target));
-        if(checkMsg(response)){
+        if(userFunction.checkMsg(response)){
             nav("/");
         }
     }
