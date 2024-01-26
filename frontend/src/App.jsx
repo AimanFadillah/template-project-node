@@ -20,7 +20,7 @@ export default function App () {
   }
 
   useEffect(() => {
-    userFunction.getUser();
+    userFunction.get();
   },[])
 
   return <BrowserRouter>

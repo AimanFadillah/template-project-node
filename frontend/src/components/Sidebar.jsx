@@ -46,7 +46,7 @@ export default function Sidebar(props) {
                             <div className="offcanvas-body d-md-flex p-0 pt-lg-3 overflow-y-auto">
                                 <ul className="nav">
                                     <li className="nav-item">
-                                        <Link className={`nav-link d-flex gap-2 text-light`} aria-current="page" to="/beranda">
+                                        <Link className={`nav-link d-flex gap-2 text-light`} aria-current="page" to="/">
                                             <i className="bi bi-house"></i>Beranda
                                         </Link>
                                     </li>
@@ -56,7 +56,7 @@ export default function Sidebar(props) {
                         </div>
                     </div>
 
-                    <main className={`col-md-9 text-dark ms-sm-auto col-lg-10 px-md-4 mt-3 ${props.className}`}>
+                    <main className={`col-md-9 ms-sm-auto col-lg-10 px-md-4 mt-3 ${props.className}`}>
                         {props.children}
                     </main>
                 </div>

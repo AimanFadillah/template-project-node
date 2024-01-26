@@ -20,7 +20,7 @@ export default class UserFunction {
         return true;
     }
 
-    async getUser() {
+    async get() {
         const response = await ConfigAxios.get(`/api/user`);
         if (this.checkMsg(response)) {
             this.setUser(response.data.data);
@@ -28,7 +28,7 @@ export default class UserFunction {
         return response.data.data;
     }
 
-    async removeUser() {
+    async remove() {
         const response = await ConfigAxios.get(`/api/logout`);
         this.setUser(false);
         return response.data.data;

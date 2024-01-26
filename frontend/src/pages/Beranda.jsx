@@ -6,6 +6,6 @@ export default function Beranda () {
     const {user,setUser,userFunction} = useContext(DataContext);
 
     return <Sidebar>
-        <h1>Hai {user.nama} <button className="btn btn-danger" onClick={() => userFunction.removeUser(setUser)} >logout</button> </h1>
+        <h1>Hai {user.nama} <button className="btn btn-danger" onClick={() => userFunction.remove(setUser)} >logout</button> </h1>
     </Sidebar>
 }
