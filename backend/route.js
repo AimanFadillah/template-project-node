@@ -1,7 +1,7 @@
 import express from "express";
-import LoginController from "./controllers/LoginController.js";
+import LoginController from "./Controllers/LoginController.js";
 import { checkLogin } from "./Functions/check.js";
-import UserController from "./controllers/UserController.js";
+import UserController from "./Controllers/UserController.js";
 
 
 const Route = express.Router();

@@ -6,13 +6,13 @@ import { useContext } from "react";
 import DataContext from "../variabels/Context";
 
 export default function Register () {
-    const {userFunction} = useContext(DataContext);
+    const {checkMsg} = useContext(DataContext);
     const nav = useNavigate();
 
     async function sendData (e) {
         e.preventDefault();
         const response = await ConfigAxios.post("/api/user",new FormData(e.target));
-        if(userFunction.checkMsg(response)){
+        if(checkMsg(response)){
             nav("/");
         }
     }

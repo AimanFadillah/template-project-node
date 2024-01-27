@@ -6,12 +6,12 @@ import { useContext } from "react";
 import DataContext from "../variabels/Context";
 
 export default function Login () {
-    const {setUser,userFunction} = useContext(DataContext);
+    const {setUser,checkMsg} = useContext(DataContext);
 
     async function sendData (e) {
         e.preventDefault();
         const response = await ConfigAxios.post("/api/login",new FormData(e.target))
-        if(userFunction.checkMsg(response)){
+        if(checkMsg(response)){
             setUser(response.data.data)
         }
     }

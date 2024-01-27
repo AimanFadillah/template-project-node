@@ -17,6 +17,7 @@ export default function App () {
     user,
     setUser,
     userFunction,
+    checkMsg:userFunction.checkMsg,
   }
 
   useEffect(() => {
