@@ -1,6 +1,12 @@
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
 
 export default function Sidebar(props) {
+
+    useEffect(() => {
+        document.body.removeAttribute("style");
+    },[]);
+
     return (
         <>
             <header className="navbar sticky-top bg-primary p-1 shadow ">

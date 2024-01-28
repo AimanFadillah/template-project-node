@@ -1,7 +1,13 @@
 import { Link } from "react-router-dom"
 import { Container } from "./Grid"
+import { useEffect } from "react";
 
 export default function Navbar ({children}) {
+
+    useEffect(() => {
+        document.body.removeAttribute("style");
+    },[]);
+
     return <>
     <nav className="navbar border navbar-expand-md p-0">
         <div className="container">
