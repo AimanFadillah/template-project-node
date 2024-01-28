@@ -1,9 +1,10 @@
 import { Link } from "react-router-dom"
+import { Container } from "./Grid"
 
 export default function Navbar ({children}) {
     return <>
-    <nav className="navbar navbar-expand-md ">
-        <div className="container-fluid px-4">
+    <nav className="navbar border navbar-expand-md p-0">
+        <div className="container">
             <a className="navbar-brand fs-2" href="#">Web</a>
             <button type="button" className="navbar-toggler" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
                 <span className="navbar-toggler-icon"></span>
@@ -22,7 +23,9 @@ export default function Navbar ({children}) {
             </div>
         </div>
     </nav>
-    {children}
+    <Container>
+        {children}
+    </Container>
     </>
 }
 
