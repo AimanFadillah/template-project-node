@@ -36,3 +36,7 @@ export function destroyImage (url) {
         return {msg:e};
     }
 }
+
+function mb (angka) {
+    return angka * 1000000;
+}
