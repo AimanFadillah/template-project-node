@@ -4,7 +4,7 @@ import DataContext from "../variabels/Context"
 import Navbar from "../components/Navbar";
 import { Container } from "../components/Grid";
 
-export default function Beranda () {
+export default function Utama () {
     const {user,setUser,userFunction} = useContext(DataContext);
 
     return <Navbar>

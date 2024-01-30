@@ -1,4 +1,8 @@
-/* .bg-primary{
+/* .text-primary{
+    color: #7286D3!important
+}
+
+.bg-primary{
     background-color: #7286D3!important
 }
 
@@ -6,6 +10,16 @@
     background-color: #7286D3!important;
     border-color: #7286D3 !important;
 } */
+
+
+.dropdown-item{ 
+    cursor: pointer;
+}
+
+.dropdown-item:active{ /*menghilangkan style default */
+    background-color:unset !important;
+    color: unset !important;
+}
 
 @media (min-width: 768px) {
     .h-md-100{
