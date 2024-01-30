@@ -21,7 +21,15 @@
     color: unset !important;
 }
 
+.img-404{
+    width: 80%;
+}
+
 @media (min-width: 768px) {
+    .img-404{
+        width: 35%;
+    }
+
     .h-md-100{
         height: 100%;
     }
