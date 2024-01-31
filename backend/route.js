@@ -5,12 +5,12 @@ import UserController from "./Controllers/UserController.js";
 
 
 const Route = express.Router();
+const AuthRoute = express.Router().use(checkLogin);
 
-Route.post("/api/login", LoginController.validate, LoginController.login);
-Route.get("/api/logout", checkLogin, LoginController.logout);
+Route.post("/api/login", LoginController.validate,LoginController.login);
+Route.post("/api/user", UserController.validate,UserController.store);
 
-Route.get("/api/user", checkLogin, UserController.index);
-Route.post("/api/user", UserController.validate, UserController.store);
+AuthRoute.get("/api/logout",LoginController.logout);
+AuthRoute.get("/api/user",UserController.index);
 
-
-export default Route;
+export default [Route,AuthRoute];
