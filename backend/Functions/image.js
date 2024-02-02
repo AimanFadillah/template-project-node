@@ -1,6 +1,13 @@
 import { v4 } from "uuid"; 
 import path from "path";
 
+/**
+ * 
+ * @param {Request} req 
+ * @param {NamaFile} file 
+ * @returns 
+ */
+
 export function uploadImage (req,file){
     let foto;
 
@@ -27,6 +34,12 @@ export function uploadImage (req,file){
         data:url,
     }
 }
+
+/**
+ * 
+ * @param {UrlFoto} url 
+ * @returns 
+ */
 
 export function destroyImage (url) {
     try{
