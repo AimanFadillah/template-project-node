@@ -2,7 +2,7 @@ import express from "express";
 import LoginController from "./Controllers/LoginController.js";
 import { checkLogin } from "./Functions/check.js";
 import UserController from "./Controllers/UserController.js";
-import RouteGroup from "./Functions/middleware.js";
+import RouteGroup from "./Functions/routeGroup.js";
 
 const Route = express.Router();
 
