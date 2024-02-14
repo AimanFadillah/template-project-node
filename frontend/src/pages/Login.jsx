@@ -2,19 +2,19 @@ import {Container,Row,Col} from "../components/Grid"
 import Input from "../components/Input";
 import { Link } from "react-router-dom";
 import ConfigAxios from "../variabels/ConfigAxios";
-import { useContext } from "react";
+import { useCallback, useContext } from "react";
 import DataContext from "../variabels/Context";
 
 export default function Login () {
     const {setUser,checkMsg} = useContext(DataContext);
 
-    async function sendData (e) {
+    const sendData = useCallback(async (e) => {
         e.preventDefault();
         const response = await ConfigAxios.post("/api/login",new FormData(e.target))
         if(checkMsg(response)){
             setUser(response.data.data)
         }
-    }
+    },[]);
 
     return <Container>
         <Row justify="center" >

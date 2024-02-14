@@ -2,20 +2,20 @@ import { Link, useNavigate } from "react-router-dom";
 import { Col, Container, Row } from "../components/Grid";
 import Input from "../components/Input";
 import ConfigAxios from "../variabels/ConfigAxios";
-import { useContext } from "react";
+import { useCallback, useContext } from "react";
 import DataContext from "../variabels/Context";
 
 export default function Register () {
     const {checkMsg} = useContext(DataContext);
     const nav = useNavigate();
 
-    async function sendData (e) {
+    const sendData = useCallback(async (e) => {
         e.preventDefault();
         const response = await ConfigAxios.post("/api/user",new FormData(e.target));
         if(checkMsg(response)){
             nav("/");
         }
-    }
+    },[])
 
     return <Container>
         <Row justify="center" >
