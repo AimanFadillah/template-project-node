@@ -25,7 +25,7 @@ export function uploadImage (req,file){
     const url = `${req.protocol}://${req.get("host")}/img/${fileName}`
 
     if(!allowedType.includes(ext.toLocaleLowerCase())) return {msg:"Yang diupload bukan gambar"}
-    if(fileSize > size) return {msg:"Gambar maksimal 5 mb"}
+    if(fileSize > size) return {msg:"Gambar maksimal 10 mb"}
 
     foto.mv(`./Public/img/${fileName}/`)
 
