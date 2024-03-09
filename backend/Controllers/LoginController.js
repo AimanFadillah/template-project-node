@@ -1,8 +1,8 @@
-import User from "../Models/User.js";
-import { body } from "express-validator"
-import bcrypt from "bcrypt";
-import jwt from "jsonwebtoken";
-import checkValidate from "../Functions/checkValidate.js";
+const User = require("../Models/User.js");
+const { body } = require("express-validator")
+const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
+const checkValidate = require("../Functions/checkValidate.js");
 
 const LoginController = {
     login: [
@@ -34,5 +34,5 @@ function jam(jam = 1) {
     return `${1000 * 60 * 60 * jam}`;
 }
 
-export default LoginController
+module.exports = LoginController
 

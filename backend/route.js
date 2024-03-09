@@ -1,8 +1,11 @@
-import express from "express";
-import LoginController from "./Controllers/LoginController.js";
-import UserController from "./Controllers/UserController.js";
-import RouteGroup from "./Functions/routeGroup.js";
-import Auth from "./Middleware/AuthMiddleware.js";
+const express = require("express");
+const LoginController = require("./Controllers/LoginController.js");
+const UserController = require("./Controllers/UserController.js");
+const RouteGroup = require("./Functions/routeGroup.js");
+const Auth = require("./Middleware/AuthMiddleware.js");
+const db = require("./Database/config.js");
+
+db.sync();
 
 const Route = express.Router();
 
@@ -14,4 +17,4 @@ RouteGroup(Route,Auth,(route) => {
     route.get("/api/user",UserController.index);
 })
 
-export default Route;
+module.exports = Route;

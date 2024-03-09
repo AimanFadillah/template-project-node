@@ -1,5 +1,5 @@
-import { DataTypes } from "sequelize";
-import db from "../Database/config.js";
+const { DataTypes } = require("sequelize");
+const db = require("../Database/config.js");
 
 const User = db.define("user",{
     id:{
@@ -15,6 +15,4 @@ const User = db.define("user",{
     password:DataTypes.STRING,
 },{freezeTableName:true})
 
-await User.sync();
-
-export default User;
+module.exports = User;

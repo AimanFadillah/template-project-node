@@ -1,5 +1,5 @@
-import { v4 } from "uuid"; 
-import path from "path";
+const { v4 } = require("uuid"); 
+const path = require("path");
 
 /**
  * 
@@ -8,7 +8,7 @@ import path from "path";
  * @returns 
  */
 
-export function uploadImage (req,file){
+module.exports = function uploadImage (req,file){
     let foto;
 
     try{
@@ -41,7 +41,7 @@ export function uploadImage (req,file){
  * @returns 
  */
 
-export function destroyImage (url) {
+module.exports = function destroyImage (url) {
     try{
         fs.unlinkSync(`./Public/img/${(url.split("/"))[url.split("/").length - 1]}`)
         return {msg:"success"};

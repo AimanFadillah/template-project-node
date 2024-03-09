@@ -1,7 +1,7 @@
-import User from "../Models/User.js";
-import { body } from "express-validator"
-import bcrypt from "bcrypt";
-import checkValidate from "../Functions/checkValidate.js";
+const User = require("../Models/User.js");
+const { body } = require("express-validator")
+const bcrypt = require("bcrypt");
+const checkValidate = require("../Functions/checkValidate.js");
 
 const UserController = {
 
@@ -27,5 +27,5 @@ const UserController = {
     ],
 }
 
-export default UserController;
+module.exports = UserController;
 

@@ -1,6 +1,6 @@
-import jwt from "jsonwebtoken";
+const jwt = require("jsonwebtoken");
 
-export default function Auth (req,res,next) {
+module.exports =  function Auth (req,res,next) {
     const token = req.cookies.login;
     const verify = jwt.verify(token,process.env.JWT_TOKEN,((err,decode) => err ? false : decode));
     if(!verify) {

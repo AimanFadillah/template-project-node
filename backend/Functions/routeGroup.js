@@ -1,4 +1,4 @@
-import express from "express";
+const express = require("express");
 
 /**
  * 
@@ -8,7 +8,7 @@ import express from "express";
  * @returns 
  */
 
-export default function RouteGroup (Route,middleware,fungsi) {
+module.exports = function RouteGroup (Route,middleware,fungsi) {
     const middlewareRoute = middleware ? express.Router().use(middleware) : express.Router();
     if(!Route) Route = express.Router();
     if(fungsi) fungsi(middlewareRoute);
