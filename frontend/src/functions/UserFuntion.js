@@ -2,18 +2,19 @@ import ConfigAxios from "../variabels/ConfigAxios";
 
 export default class UserFunction {
 
-    constructor(user,setUser){
+    constructor(user, setUser) {
         this.user = user;
         this.setUser = setUser;
     }
 
-    checkMsg(response) {
-        const msg = response.data.msg;
-        if (msg === "dangerToken" && this.setUser) {
+    checkStatus(e) {
+        const msg = e.response.data.msg;
+        const status = e.response.status;
+        if (status == 401 && this.setUser) {
             this.setUser(false);
             return false;
         };
-        if (msg !== "success") {
+        if (status == 403) {
             alert(msg);
             return false;
         }
@@ -21,17 +22,23 @@ export default class UserFunction {
     }
 
     async get() {
-        const response = await ConfigAxios.get(`/api/user`);
-        if (this.checkMsg(response)) {
+        try {
+            const response = await ConfigAxios.get(`/api/user`);
             this.setUser(response.data.data);
+            return response.data.data;
+        } catch (e) {
+            this.checkStatus(e)
         }
-        return response.data.data;
     }
 
     async remove() {
-        const response = await ConfigAxios.get(`/api/logout`);
-        this.setUser(false);
-        return response.data.data;
+        try{
+            const response = await ConfigAxios.get(`/api/logout`);
+            this.setUser(false);
+            return response.data.data;
+        }catch(e){
+            this.checkStatus(e);
+        }
     }
 
 }

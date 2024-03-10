@@ -3,9 +3,6 @@ const LoginController = require("./Controllers/LoginController.js");
 const UserController = require("./Controllers/UserController.js");
 const RouteGroup = require("./Functions/routeGroup.js");
 const Auth = require("./Middleware/AuthMiddleware.js");
-const db = require("./Database/config.js");
-
-db.sync();
 
 const Route = express.Router();
 

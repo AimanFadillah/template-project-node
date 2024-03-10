@@ -6,14 +6,16 @@ import { useCallback, useContext } from "react";
 import DataContext from "../variabels/Context";
 
 export default function Register () {
-    const {checkMsg} = useContext(DataContext);
+    const {checkStatus} = useContext(DataContext);
     const nav = useNavigate();
 
     const sendData = useCallback(async (e) => {
-        e.preventDefault();
-        const response = await ConfigAxios.post("/api/user",new FormData(e.target));
-        if(checkMsg(response)){
+        try{
+            e.preventDefault();
+            const response = await ConfigAxios.post("/api/user",new FormData(e.target));
             nav("/");
+        }catch(e){
+            checkStatus(e);
         }
     },[])
 

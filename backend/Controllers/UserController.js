@@ -21,7 +21,7 @@ const UserController = {
                 await User.create(body);
                 return res.json({ msg: "success" });
             } catch (e) {
-                return res.json({ msg: "Email tidak unik" })
+                return res.status(403).json({ msg: "Email tidak unik" })
             }
         }
     ],

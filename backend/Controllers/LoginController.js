@@ -3,6 +3,7 @@ const { body } = require("express-validator")
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const checkValidate = require("../Functions/checkValidate.js");
+const { jam } = require("../Functions/format.js");
 
 const LoginController = {
     login: [
@@ -20,7 +21,7 @@ const LoginController = {
                 return res.json({ msg: "success", data: payload });
             }
 
-            return res.json({ msg: "Email atau password Salah" });
+            return res.status(403).json({ msg: "Email atau password Salah" });
         }
     ],
 
@@ -28,10 +29,6 @@ const LoginController = {
         res.clearCookie("login");
         return res.json({ msg: "success" });
     }
-}
-
-function jam(jam = 1) {
-    return `${1000 * 60 * 60 * jam}`;
 }
 
 module.exports = LoginController
