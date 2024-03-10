@@ -2,11 +2,12 @@ const User = require("../Models/User.js");
 const { body } = require("express-validator")
 const bcrypt = require("bcrypt");
 const checkValidate = require("../Functions/checkValidate.js");
+const { pesanSuccess, pesanError } = require("../Functions/pesan.js");
 
 const UserController = {
 
     index: async function (req, res) {
-        return res.json({ msg: "success", data: req.user });
+        return pesanSuccess(res,req.user);
     },
 
     store: [
@@ -19,9 +20,9 @@ const UserController = {
                 const body = req.body;
                 body.password = bcrypt.hashSync(body.password, 10);
                 await User.create(body);
-                return res.json({ msg: "success" });
+                return pesanSuccess(res);
             } catch (e) {
-                return res.status(403).json({ msg: "Email tidak unik" })
+                return pesanError(res,"Email tidak unik")
             }
         }
     ],

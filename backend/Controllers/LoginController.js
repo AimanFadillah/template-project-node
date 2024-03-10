@@ -4,6 +4,7 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const checkValidate = require("../Functions/checkValidate.js");
 const { jam } = require("../Functions/format.js");
+const { pesanError, pesanSuccess } = require("../Functions/pesan.js");
 
 const LoginController = {
     login: [
@@ -18,16 +19,16 @@ const LoginController = {
                 const payload = user.toJSON(); delete payload.password;
                 const token = jwt.sign(payload, process.env.JWT_TOKEN, { expiresIn: jam(3) });
                 res.cookie("login", token, { httpOnly: true, maxAge: jam(3) });
-                return res.json({ msg: "success", data: payload });
+                return pesanSuccess(res,payload);
             }
 
-            return res.status(403).json({ msg: "Email atau password Salah" });
+            return pesanError(res,"Email atu Password salah");
         }
     ],
 
     logout: function (req, res) {
         res.clearCookie("login");
-        return res.json({ msg: "success" });
+        return pesanSuccess(res);
     }
 }
 
