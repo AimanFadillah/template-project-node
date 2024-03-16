@@ -1,4 +1,5 @@
 import ConfigAxios from "../variabels/ConfigAxios";
+import Alert from "./Alert";
 
 export default class UserFunction {
 
@@ -15,7 +16,7 @@ export default class UserFunction {
             return false;
         };
         if (status == 403) {
-            alert(msg);
+            Alert(msg)
             return false;
         }
         return true;
@@ -32,11 +33,11 @@ export default class UserFunction {
     }
 
     async remove() {
-        try{
+        try {
             const response = await ConfigAxios.get(`/api/logout`);
             this.setUser(false);
             return response.data.data;
-        }catch(e){
+        } catch (e) {
             this.checkStatus(e);
         }
     }

@@ -19,10 +19,10 @@ const LoginController = {
                 const payload = user.toJSON(); delete payload.password;
                 const token = jwt.sign(payload, process.env.JWT_TOKEN, { expiresIn: jam(3) });
                 res.cookie("login", token, { httpOnly: true, maxAge: jam(3) });
-                return pesanSuccess(res,payload);
+                return pesanSuccess(res, payload);
             }
 
-            return pesanError(res,"Email atu Password salah");
+            return pesanError(res, "Email atau Password salah");
         }
     ],
 
