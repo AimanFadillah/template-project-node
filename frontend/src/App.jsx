@@ -8,6 +8,7 @@ import DataContext from "./variabels/Context.js"
 import Middleware from "./components/Midleware.jsx"
 import UserFunction from "./functions/UserFuntion.js";
 import Utama from "./pages/Utama.jsx";
+import LoadingBar from "./components/LoadingBar.jsx";
 
 export default function App () {
   const [user,setUser] = useState();
@@ -26,6 +27,7 @@ export default function App () {
 
   return <BrowserRouter>
     <DataContext.Provider value={globalVariabel} >
+      <LoadingBar />
 
       <Middleware next={user == undefined} >
         <Route path="*" element={<Loading />} />
