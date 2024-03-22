@@ -5,7 +5,7 @@ const pesan = {
      * @param {Data} data 
      */
     pesanSuccess:function (res,data = null){
-        return res.status(200).json({msg:"success",data})
+        return res.status(200).json(btoa(JSON.stringify({msg:"success",data})))
     },
 
     /**
@@ -15,7 +15,7 @@ const pesan = {
      * @param {Data} data 
      */
     pesanError:function (res,msg = "Invalid",data = null){
-        return res.status(403).json({msg,data})
+        return res.status(403).json(btoa(JSON.stringify({msg,data})))
     }
 }
 
