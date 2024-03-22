@@ -16,6 +16,6 @@ app.use(cookieParser());
 app.use(express.json());
 app.use(fileUpload());
 app.use(express.static(__dirname + "/Public"));
-app.use(Route);
+app.use("/api",Route);
 
 app.listen(process.env.APP_PORT, () => console.log(`Server On in http://localhost:${process.env.APP_PORT}/`));

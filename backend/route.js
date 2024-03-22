@@ -6,12 +6,12 @@ const Auth = require("./Middleware/AuthMiddleware.js");
 
 const Route = express.Router();
 
-Route.post("/api/login",LoginController.login);
-Route.post("/api/user",UserController.store);
+Route.post("/login", LoginController.login);
+Route.post("/user", UserController.store);
 
-RouteGroup(Route,Auth,(route) => {
-    route.get("/api/logout",LoginController.logout);
-    route.get("/api/user",UserController.index);
+RouteGroup(Route, Auth, (route) => {
+    route.get("/logout", LoginController.logout);
+    route.get("/user", UserController.index);
 })
 
 module.exports = Route;

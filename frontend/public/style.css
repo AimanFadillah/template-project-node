@@ -15,7 +15,7 @@
 #loading-bar {
     position: fixed;
     top: 0;
-    height: 3px;
+    height: 4px;
     width: 0%;
     transition: width 0.3s ease;
     z-index: 999;
