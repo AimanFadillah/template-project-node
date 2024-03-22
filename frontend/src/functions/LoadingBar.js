@@ -13,11 +13,6 @@ export function loadingBarStart() {
         loading.style.width = `${persen}%`;
         persen += 20
     }
-    setTimeout(() => {
-        if(loading.style.display !== "none"){
-            Alert("Terjadi kesalahan pada backend")
-        }
-    },5000);
     return true
 }
 
