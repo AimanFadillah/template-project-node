@@ -1,4 +1,3 @@
-import {Container,Row,Col} from "../components/Grid"
 import Input from "../components/Input";
 import { Link } from "react-router-dom";
 import ConfigAxios from "../variabels/ConfigAxios";
@@ -18,9 +17,9 @@ export default function Login () {
         }
     },[]);
 
-    return <Container>
-        <Row justify="center" >
-            <Col pc="6" className="mt-5">
+    return <div className="container">
+        <div className="row justify-content-center">
+            <div className="col-md-6 mt-5">
                 <form onSubmit={sendData} className="border p-3 rounded shadow">
                     <h2 className="text-center" >Login</h2>
                     <div className="mb-3">
@@ -32,7 +31,7 @@ export default function Login () {
                     <button className="text-center btn btn-primary mt-2 shadow w-100" >Masuk</button>
                     <h6 className="text-center d-block mt-3" style={{ fontSize:"14px" }} >Tidak punya akun bisa <Link to={"/register"} >Buat akun</Link></h6>
                 </form>
-            </Col>
-        </Row>
-    </Container>
+            </div>
+        </div>
+    </div>
 }

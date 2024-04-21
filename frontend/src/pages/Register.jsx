@@ -1,5 +1,4 @@
 import { Link, useNavigate } from "react-router-dom";
-import { Col, Container, Row } from "../components/Grid";
 import Input from "../components/Input";
 import ConfigAxios from "../variabels/ConfigAxios";
 import { useCallback, useContext } from "react";
@@ -19,9 +18,9 @@ export default function Register () {
         }
     },[])
 
-    return <Container>
-        <Row justify="center" >
-            <Col pc="6" className="mt-5" >
+    return <div className="container">
+        <div className="row justify-content-center">
+            <div className="col-md-6 mt-5">
                 <form onSubmit={sendData} className="border p-3 rounded shadow">
                     <h2 className="text-center" >Register</h2>
                     <div className="mb-3">
@@ -36,7 +35,7 @@ export default function Register () {
                     <button className="text-center btn btn-primary mt-2 shadow w-100" >Buat</button>
                     <h6 className="text-center d-block mt-3" style={{ fontSize:"14px" }} >Sudah punya akun bisa langsung <Link to={"/"} >masuk</Link></h6>
                 </form>
-            </Col>
-        </Row>
-    </Container>
+            </div>
+        </div>
+    </div>
 }

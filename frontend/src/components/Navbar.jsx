@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom"
-import { Container } from "./Grid"
 import { useEffect } from "react";
 
 export default function Navbar ({children}) {
@@ -29,9 +28,9 @@ export default function Navbar ({children}) {
             </div>
         </div>
     </nav>
-    <Container>
+    <div className="container">
         {children}
-    </Container>
+    </div>
     </>
 }
 
