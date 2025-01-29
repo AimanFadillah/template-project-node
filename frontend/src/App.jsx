@@ -6,7 +6,7 @@ import Loading from "./components/Loading";
 import Page404 from "./pages/404";
 import DataContext from "./variabels/Context.js"
 import Middleware from "./components/Midleware.jsx"
-import UserFunction from "./functions/UserFuntion.js";
+import UserFunction from "./functions/UserFunction.js";
 import Utama from "./pages/Utama.jsx";
 import LoadingBar from "./components/LoadingBar.jsx";
 
